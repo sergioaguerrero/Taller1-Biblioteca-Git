@@ -1,16 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.taller1.biblioteca.git.sage;
 
-/**
- *
- * @author ESTUDIANTES
- */
-public class Main {
+import java.util.ArrayList; 
+import java.util.Scanner; 
 
+public class Main {
+    static ArrayList<Client> clients = new ArrayList<>(); 
+    static Scanner sc = new Scanner(System.in);
+    
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // menu stage 8
+        createClient();
+    }
+    
+    public static void createClient() {
+        System.out.println("-----Create Client-----");
+
+        System.out.print("Insert id: ");
+        String id = sc.nextLine();
+
+        System.out.print("Insert name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Insert phone: ");
+        String phone = sc.nextLine();
+
+        System.out.print("Insert email: ");
+        String email = sc.nextLine();
+
+        Client client = new Client(email, id, name, phone);
+
+        clients.add(client);
+
+        System.out.println("Success");
     }
 }
