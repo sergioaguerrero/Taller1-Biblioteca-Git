@@ -41,4 +41,15 @@ public class Main {
             System.out.println((i + 1) + " - " + client);
         }
     }
+
+    public static void readSearchClient() {
+        System.out.println("Enter client ID");
+        String idClient = sc.nextLine();
+
+        for (Client client : clients) {
+            if (client.getId().equals(idClient)) {
+                System.out.println(client);
+            }
+        }
+    }
 }
