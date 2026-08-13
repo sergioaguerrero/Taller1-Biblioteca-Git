@@ -11,6 +11,7 @@ public class Main {
         // menu stage 8
         //createClient();
         //readClient();
+        //readSearchClient();
     }
 
     public static void createClient() {
@@ -18,24 +19,23 @@ public class Main {
 
         System.out.print("Insert id: ");
         String id = sc.nextLine();
-
         System.out.print("Insert name: ");
         String name = sc.nextLine();
-
         System.out.print("Insert phone: ");
         String phone = sc.nextLine();
-
         System.out.print("Insert email: ");
         String email = sc.nextLine();
 
         Client client = new Client(email, id, name, phone);
-
         clients.add(client);
-
         System.out.println("Success");
     }
 
     public static void readClient() {
+        if (clients.isEmpty()) {
+            System.out.println("There are no registered clients.");
+            return;
+        }
         for (int i = 0; i < clients.size(); i++) {
             Client client = clients.get(i);
             System.out.println((i + 1) + " - " + client);
@@ -43,13 +43,23 @@ public class Main {
     }
 
     public static void readSearchClient() {
+        if (clients.isEmpty()) {
+            System.out.println("There are no registered clients.");
+            return;
+        }
         System.out.println("Enter client ID");
         String idClient = sc.nextLine();
 
+        int found = 0;
         for (Client client : clients) {
             if (client.getId().equals(idClient)) {
                 System.out.println(client);
+                found = 1;
+                break;
             }
+        }
+        if (found == 0) {
+            System.out.println("No client was found with ID: " + idClient);
         }
     }
 }
