@@ -1,17 +1,18 @@
 package com.mycompany.taller1.biblioteca.git.sage;
 
-import java.util.ArrayList; 
-import java.util.Scanner; 
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
-    static ArrayList<Client> clients = new ArrayList<>(); 
+    static ArrayList<Client> clients = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
-    
+
     public static void main(String[] args) {
         // menu stage 8
-        createClient();
+        //createClient();
+        //readClient();
     }
-    
+
     public static void createClient() {
         System.out.println("-----Create Client-----");
 
@@ -32,5 +33,12 @@ public class Main {
         clients.add(client);
 
         System.out.println("Success");
+    }
+
+    public static void readClient() {
+        for (int i = 0; i < clients.size(); i++) {
+            Client client = clients.get(i);
+            System.out.println((i + 1) + " - " + client);
+        }
     }
 }
