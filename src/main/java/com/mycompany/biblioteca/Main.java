@@ -1,4 +1,4 @@
-package com.mycompany.taller1.biblioteca.git.sage;
+package com.mycompany.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
