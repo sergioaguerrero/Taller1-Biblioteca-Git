@@ -62,4 +62,31 @@ public class Main {
             System.out.println("No client was found with ID: " + idClient);
         }
     }
+
+    public static void updateClient() {
+        if (clients.isEmpty()) {
+            System.out.println("There are no registered clients.");
+            return;
+        }
+        System.out.println("Enter client ID to update");
+        String idClient = sc.nextLine();
+
+        for (Client client : clients) {
+            if (client.getId().equals(idClient)) {
+                System.out.print("Insert new name: ");
+                String name = sc.nextLine();
+                System.out.print("Insert new phone: ");
+                String phone = sc.nextLine();
+                System.out.print("Insert new email: ");
+                String email = sc.nextLine();
+                client.setName(name);
+                client.setPhone(phone);
+                client.setEmail(email);
+
+                System.out.println("Client updated successfully.");
+                return;
+            }
+        }
+        System.out.println("No client was found with ID: " + idClient);
+    }
 }
