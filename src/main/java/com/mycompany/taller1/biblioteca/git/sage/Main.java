@@ -12,6 +12,7 @@ public class Main {
         //createClient();
         //readClient();
         //readSearchClient();
+        //deleteClient();
     }
 
     public static void createClient() {
@@ -88,5 +89,21 @@ public class Main {
             }
         }
         System.out.println("No client was found with ID: " + idClient);
+    }
+
+    public static void deleteClient() {
+        if (clients.isEmpty()) {
+            System.out.println("There are no registered clients.");
+            return;
+        }
+        System.out.println("Enter client ID to update");
+        String idClient = sc.nextLine();
+
+        for (int i = 0; i < clients.size(); i++) {
+            if (clients.get(i).getId().equals(idClient)) {
+                clients.remove(i);
+                break;
+            }
+        }
     }
 }
