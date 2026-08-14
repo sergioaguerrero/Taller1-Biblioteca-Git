@@ -1,4 +1,4 @@
-package com.mycompany.biblioteca;
+package com.mycompany.taller1.biblioteca.git.sage;
 
 public class Person {
     private String id;
