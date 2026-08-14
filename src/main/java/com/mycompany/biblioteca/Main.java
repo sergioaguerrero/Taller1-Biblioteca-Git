@@ -14,7 +14,9 @@ public class Main {
         //readClient();
         //readSearchClient();
         //deleteClient();
+
         //createBook();
+        //readBook();
     }
 
     public static void createClient() {
@@ -109,6 +111,8 @@ public class Main {
         }
     }
 
+    //METODOS CLASE LIBROS
+
     public static void createBook() {
         System.out.println("-----Register Book-----");
 
@@ -124,5 +128,16 @@ public class Main {
         Book book = new Book(id, title, publicationDate, author);
         books.add(book);
         System.out.println("Success");
+    }
+
+    public static void readBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            System.out.println((i + 1) + " - " + book);
+        }
     }
 }
