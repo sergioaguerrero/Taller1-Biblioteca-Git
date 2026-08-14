@@ -24,7 +24,8 @@ public class Main {
         //readSearchBook();
         //updateBook();
 
-        //createLoan(client, book)
+        //createLoan();
+        //returnLoan();
     }
 
     //METHODS CLASS CLIENT
@@ -287,6 +288,31 @@ public class Main {
         System.out.println("Loan registered successfully [ID: " + idLoan + "]");
     }
 
+    public static void returnLoan() {
+        System.out.println("-----Return Loan-----");
 
+        if (loans.isEmpty()) {
+            System.out.println("There are no registered loans.");
+            return;
+        }
+        System.out.print("Enter loan ID: ");
+        String idLoan = sc.nextLine();
 
+        for (Loan loan : loans) {
+            if (loan.getIdLoan().equals(idLoan)) {
+
+                if (loan.getStatus().equals("Returned")) {
+                    System.out.println("This loan has already been returned.");
+                    return;
+                }
+                loan.setStatus("Returned");
+                loan.getBook().setAvailable(true);
+
+                System.out.println("Book returned successfully.");
+                return;
+            }
+        }
+
+        System.out.println("Loan not found.");
+    }
 }
