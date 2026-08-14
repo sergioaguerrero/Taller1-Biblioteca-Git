@@ -13,20 +13,75 @@ public class Main {
     private static int loanCounter = 1;
 
     public static void main(String[] args) {
-        // menu stage 8;
-        //createClient();
-        //readClient();
-        //readSearchClient();
-        //deleteClient();
+        String choice = "";
+        do {
+            System.out.println("""
+            --- WELCOME TO THE LIBRARY HUB ---
+            
+            Enter option between 0 - 13
+            
+            -------- CLIENTS --------
+            
+            0. To create a new Client
+            1. To list the Clients
+            2. To search a Client
+            3. To update a Client
+            4. To delete a Client
+            
+            -------- BOOKS --------
+            
+            5. To create a new Book
+            6. To list the Books
+            7. To search a Book
+            8. To update a Book
+            9. To delete a Book
+            
+            -------- LOANS --------
+            
+            10. To create a new Loan
+            11. To return a Loan
+            12. To list the Loans
+            
+            13. To exit
+            """);
 
-        //createBook();
-        //readBook();
-        //readSearchBook();
-        //updateBook();
+            try {
+                int menu = Integer.parseInt(sc.nextLine());
 
-        //createLoan();
-        //returnLoan();
-        //readLoan();
+                switch (menu) {
+                    case 0: createClient();     break;
+                    case 1: readClient();       break;
+                    case 2: readSearchClient(); break;
+                    case 3: updateClient();     break;
+                    case 4: deleteClient();     break;
+
+                    case 5: createBook();       break;
+                    case 6: readBook();         break;
+                    case 7: readSearchBook();   break;
+                    case 8: updateBook();       break;
+                    case 9: deleteBook();       break;
+
+                    case 10: createLoan();      break;
+                    case 11: returnLoan();      break;
+                    case 12: readLoan();        break;
+
+                    case 13: choice = "N";      break;
+
+                    default: System.out.println("INVALID OPTION!!!");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+            
+            if (!choice.equalsIgnoreCase("N")) {
+                System.out.print("\nDo you want to continue? (S/N): ");
+                choice = sc.nextLine();
+            }
+
+        } while (choice.equalsIgnoreCase("S"));
+
+        System.out.println("\nThank you for using Library Hub. Goodbye!");
     }
 
     //METHODS CLASS CLIENT
