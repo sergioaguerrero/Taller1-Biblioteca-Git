@@ -14,6 +14,7 @@ public class Main {
         //readClient();
         //readSearchClient();
         //deleteClient();
+        //createBook();
     }
 
     public static void createClient() {
@@ -108,6 +109,20 @@ public class Main {
         }
     }
 
-    //String idBook, String title, String publicationDate, String author, boolean available
+    public static void createBook() {
+        System.out.println("-----Register Book-----");
 
+        System.out.print("Insert id book: ");
+        String id = sc.nextLine();
+        System.out.print("Insert title: ");
+        String title = sc.nextLine();
+        System.out.print("Insert publication date: ");
+        String publicationDate = sc.nextLine();
+        System.out.print("Insert author: ");
+        String author = sc.nextLine();
+
+        Book book = new Book(id, title, publicationDate, author);
+        books.add(book);
+        System.out.println("Success");
+    }
 }

@@ -7,10 +7,10 @@ public class Book extends Material{
     public Book() {
     }
 
-    public Book(String idBook, String title, String publicationDate, String author, boolean available) {
+    public Book(String idBook, String title, String publicationDate, String author) {
         super(idBook, title, publicationDate);
         this.author = author;
-        this.available = available;
+        this.available = true;
     }
 
     public String getAuthor() {
