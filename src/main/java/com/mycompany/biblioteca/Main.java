@@ -195,4 +195,20 @@ public class Main {
         }
         System.out.println("No book was found with ID: " + idBook);
     }
+
+    public static void deleteBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        System.out.println("Enter book ID to update");
+        String idBook = sc.nextLine();
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getIdBook().equals(idBook)) {
+                books.remove(i);
+                break;
+            }
+        }
+    }
 }
