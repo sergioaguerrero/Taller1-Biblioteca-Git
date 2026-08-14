@@ -37,4 +37,10 @@ public class Material {
     public void setPublicationDate(String publicationDate) {
         this.publicationDate = publicationDate;
     }
+
+    @Override
+    public String toString() {
+        return "idBook: " + idBook + ", Title: " + title +
+                ", Publication: " + publicationDate;
+    }
 }
