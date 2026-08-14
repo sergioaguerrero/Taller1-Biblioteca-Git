@@ -40,8 +40,8 @@ public class Person {
 
     @Override
     public String toString() {
-        return "id: " + id + ", name: " + name +
-                ", phone: " + phone;
+        return "id: " + id + ", Name: " + name +
+                ", Phone: " + phone;
     }
 }
 

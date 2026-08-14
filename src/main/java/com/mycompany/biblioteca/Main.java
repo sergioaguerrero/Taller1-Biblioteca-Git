@@ -34,18 +34,17 @@ public class Main {
     public static void createClient() {
         System.out.println("-----Create Client-----");
 
-        System.out.print("Enter id: ");
+        System.out.print("Insert id: ");
         String id = sc.nextLine();
-        System.out.print("Enter name: ");
+        System.out.print("Insert name: ");
         String name = sc.nextLine();
-        System.out.print("Enter phone: ");
+        System.out.print("Insert phone: ");
         String phone = sc.nextLine();
-        System.out.print("Enter email: ");
+        System.out.print("Insert email: ");
         String email = sc.nextLine();
 
         Client client = new Client(email, id, name, phone);
         clients.add(client);
-
         System.out.println("Success");
     }
 
@@ -91,13 +90,12 @@ public class Main {
 
         for (Client client : clients) {
             if (client.getId().equals(idClient)) {
-                System.out.print("Enter new name: ");
+                System.out.print("Insert new name: ");
                 String name = sc.nextLine();
-                System.out.print("Enter new phone: ");
+                System.out.print("Insert new phone: ");
                 String phone = sc.nextLine();
-                System.out.print("Enter new email: ");
+                System.out.print("Insert new email: ");
                 String email = sc.nextLine();
-
                 client.setName(name);
                 client.setPhone(phone);
                 client.setEmail(email);
