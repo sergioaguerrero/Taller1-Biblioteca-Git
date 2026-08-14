@@ -60,4 +60,11 @@ public class Loan {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "idLoan: " + idLoan + " Client: " + client.getName() +
+                " Book: " + book.getTitle() + " Date: " + date +
+                " Status: " + status;
+    }
 }

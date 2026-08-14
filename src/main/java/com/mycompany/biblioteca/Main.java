@@ -13,7 +13,7 @@ public class Main {
     private static int loanCounter = 1;
 
     public static void main(String[] args) {
-        // menu stage 8
+        // menu stage 8;
         //createClient();
         //readClient();
         //readSearchClient();
@@ -26,6 +26,7 @@ public class Main {
 
         //createLoan();
         //returnLoan();
+        //readLoan();
     }
 
     //METHODS CLASS CLIENT
@@ -314,5 +315,16 @@ public class Main {
         }
 
         System.out.println("Loan not found.");
+    }
+
+    public static void readLoan() {
+        if (loans.isEmpty()) {
+            System.out.println("There are no registered loans.");
+            return;
+        }
+        for (int i = 0; i < loans.size(); i++) {
+            Loan loan = loans.get(i);
+            System.out.println((i + 1) + " - " + loan);
+        }
     }
 }
