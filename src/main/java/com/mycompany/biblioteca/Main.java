@@ -1,12 +1,16 @@
 package com.mycompany.biblioteca;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     static ArrayList<Client> clients = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
+
+    private static int loanCounter = 1;
 
     public static void main(String[] args) {
         // menu stage 8
@@ -19,9 +23,11 @@ public class Main {
         //readBook();
         //readSearchBook();
         //updateBook();
+
+        //createLoan(client, book)
     }
 
-    //METODOS CLASE CLIENT
+    //METHODS CLASS CLIENT
 
     public static void createClient() {
         System.out.println("-----Create Client-----");
@@ -117,7 +123,7 @@ public class Main {
         }
     }
 
-    //METODOS CLASE BOOK
+    //METHODS CLASS BOOK
 
     public static void createBook() {
         System.out.println("-----Register Book-----");
@@ -201,7 +207,7 @@ public class Main {
             System.out.println("There are no registered books.");
             return;
         }
-        System.out.println("Enter book ID to update");
+        System.out.println("Enter book ID to delete");
         String idBook = sc.nextLine();
 
         for (int i = 0; i < books.size(); i++) {
@@ -211,4 +217,76 @@ public class Main {
             }
         }
     }
+
+    //METHODS CLASS LOAN
+
+    public static void createLoan() {
+        System.out.println("-----Register Loan-----");
+
+        if (clients.isEmpty()) {
+            System.out.println("There are no registered clients.");
+            return;
+        }
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+
+        System.out.print("Enter client ID: ");
+        String idClient = sc.nextLine();
+
+        Client clientFound = null;
+
+        for (Client client : clients) {
+            if (client.getId().equals(idClient)) {
+                clientFound = client;
+                break;
+            }
+        }
+        if (clientFound == null) {
+            System.out.println("No client was found with ID: " + idClient);
+            return;
+        }
+
+        System.out.print("Enter book ID: ");
+        String idBook = sc.nextLine();
+
+        Book bookFound = null;
+
+        for (Book book : books) {
+            if (book.getIdBook().equals(idBook)) {
+                bookFound = book;
+                break;
+            }
+        }
+        if (bookFound == null) {
+            System.out.println("No book was found with ID: " + idBook);
+            return;
+        }
+        if (!bookFound.isAvailable()) {
+            System.out.println("The book " + bookFound.getTitle() + " is not available.");
+            return;
+        }
+
+        String idLoan = String.format("%04d", loanCounter);
+        loanCounter++;
+
+        LocalDate today = LocalDate.now();
+
+        Loan newLoan = new Loan(
+                idLoan,
+                clientFound,
+                bookFound,
+                today,
+                "Active"
+        );
+
+        bookFound.setAvailable(false);
+        loans.add(newLoan);
+
+        System.out.println("Loan registered successfully [ID: " + idLoan + "]");
+    }
+
+
+
 }
