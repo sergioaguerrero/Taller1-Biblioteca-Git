@@ -17,6 +17,7 @@ public class Main {
 
         //createBook();
         //readBook();
+        //readSearchBook();
     }
 
     public static void createClient() {
@@ -138,6 +139,27 @@ public class Main {
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
             System.out.println((i + 1) + " - " + book);
+        }
+    }
+
+    public static void readSearchBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        System.out.println("Enter book ID");
+        String idBook = sc.nextLine();
+
+        int found = 0;
+        for (Book book : books) {
+            if (book.getIdBook().equals(idBook)) {
+                System.out.println(book);
+                found = 1;
+                break;
+            }
+        }
+        if (found == 0) {
+            System.out.println("No books was found with ID: " + idBook);
         }
     }
 }
