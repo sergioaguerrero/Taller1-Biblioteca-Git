@@ -1,10 +1,11 @@
-package com.mycompany.taller1.biblioteca.git.sage;
+package com.mycompany.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -13,6 +14,11 @@ public class Main {
         //readClient();
         //readSearchClient();
         //deleteClient();
+
+        //createBook();
+        //readBook();
+        //readSearchBook();
+        //updateBook();
     }
 
     public static void createClient() {
@@ -102,6 +108,101 @@ public class Main {
         for (int i = 0; i < clients.size(); i++) {
             if (clients.get(i).getId().equals(idClient)) {
                 clients.remove(i);
+                break;
+            }
+        }
+    }
+
+    //METODOS CLASE BOOK
+
+    public static void createBook() {
+        System.out.println("-----Register Book-----");
+
+        System.out.print("Enter id book: ");
+        String id = sc.nextLine();
+        System.out.print("Enter title: ");
+        String title = sc.nextLine();
+        System.out.print("Enter publication date: ");
+        String publicationDate = sc.nextLine();
+        System.out.print("Enter author: ");
+        String author = sc.nextLine();
+
+        Book book = new Book(id, title, publicationDate, author);
+        books.add(book);
+        System.out.println("Success");
+    }
+
+    public static void readBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            System.out.println((i + 1) + " - " + book);
+        }
+    }
+
+    public static void readSearchBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        System.out.println("Enter book ID");
+        String idBook = sc.nextLine();
+
+        int found = 0;
+        for (Book book : books) {
+            if (book.getIdBook().equals(idBook)) {
+                System.out.println(book);
+                found = 1;
+                break;
+            }
+        }
+        if (found == 0) {
+            System.out.println("No books was found with ID: " + idBook);
+        }
+    }
+
+    public static void updateBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        System.out.println("Enter book ID to update");
+        String idBook = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getIdBook().equals(idBook)) {
+                System.out.print("Enter new title: ");
+                String title = sc.nextLine();
+                System.out.print("Enter new publication date: ");
+                String publicationDate = sc.nextLine();
+                System.out.print("Enter new author: ");
+                String author = sc.nextLine();
+
+                book.setTitle(title);
+                book.setPublicationDate(publicationDate);
+                book.setAuthor(author);
+
+                System.out.println("Book updated successfully.");
+                return;
+            }
+        }
+        System.out.println("No book was found with ID: " + idBook);
+    }
+
+    public static void deleteBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        System.out.println("Enter book ID to update");
+        String idBook = sc.nextLine();
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getIdBook().equals(idBook)) {
+                books.remove(i);
                 break;
             }
         }
