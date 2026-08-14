@@ -18,22 +18,26 @@ public class Main {
         //createBook();
         //readBook();
         //readSearchBook();
+        //updateBook();
     }
+
+    //METODOS CLASE CLIENT
 
     public static void createClient() {
         System.out.println("-----Create Client-----");
 
-        System.out.print("Insert id: ");
+        System.out.print("Enter id: ");
         String id = sc.nextLine();
-        System.out.print("Insert name: ");
+        System.out.print("Enter name: ");
         String name = sc.nextLine();
-        System.out.print("Insert phone: ");
+        System.out.print("Enter phone: ");
         String phone = sc.nextLine();
-        System.out.print("Insert email: ");
+        System.out.print("Enter email: ");
         String email = sc.nextLine();
 
         Client client = new Client(email, id, name, phone);
         clients.add(client);
+
         System.out.println("Success");
     }
 
@@ -79,12 +83,13 @@ public class Main {
 
         for (Client client : clients) {
             if (client.getId().equals(idClient)) {
-                System.out.print("Insert new name: ");
+                System.out.print("Enter new name: ");
                 String name = sc.nextLine();
-                System.out.print("Insert new phone: ");
+                System.out.print("Enter new phone: ");
                 String phone = sc.nextLine();
-                System.out.print("Insert new email: ");
+                System.out.print("Enter new email: ");
                 String email = sc.nextLine();
+
                 client.setName(name);
                 client.setPhone(phone);
                 client.setEmail(email);
@@ -112,18 +117,18 @@ public class Main {
         }
     }
 
-    //METODOS CLASE LIBROS
+    //METODOS CLASE BOOK
 
     public static void createBook() {
         System.out.println("-----Register Book-----");
 
-        System.out.print("Insert id book: ");
+        System.out.print("Enter id book: ");
         String id = sc.nextLine();
-        System.out.print("Insert title: ");
+        System.out.print("Enter title: ");
         String title = sc.nextLine();
-        System.out.print("Insert publication date: ");
+        System.out.print("Enter publication date: ");
         String publicationDate = sc.nextLine();
-        System.out.print("Insert author: ");
+        System.out.print("Enter author: ");
         String author = sc.nextLine();
 
         Book book = new Book(id, title, publicationDate, author);
@@ -161,5 +166,33 @@ public class Main {
         if (found == 0) {
             System.out.println("No books was found with ID: " + idBook);
         }
+    }
+
+    public static void updateBook() {
+        if (books.isEmpty()) {
+            System.out.println("There are no registered books.");
+            return;
+        }
+        System.out.println("Enter book ID to update");
+        String idBook = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getIdBook().equals(idBook)) {
+                System.out.print("Enter new title: ");
+                String title = sc.nextLine();
+                System.out.print("Enter new publication date: ");
+                String publicationDate = sc.nextLine();
+                System.out.print("Enter new author: ");
+                String author = sc.nextLine();
+
+                book.setTitle(title);
+                book.setPublicationDate(publicationDate);
+                book.setAuthor(author);
+
+                System.out.println("Book updated successfully.");
+                return;
+            }
+        }
+        System.out.println("No book was found with ID: " + idBook);
     }
 }
