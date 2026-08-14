@@ -3,15 +3,15 @@ package com.mycompany.biblioteca;
 public class Material {
     private String idBook;
     private String title;
-    private String anioPublic;
+    private String publicationDate;
 
     public Material() {
     }
 
-    public Material(String idBook, String title, String anioPublic) {
+    public Material(String idBook, String title, String publicationDate) {
         this.idBook = idBook;
         this.title = title;
-        this.anioPublic = anioPublic;
+        this.publicationDate = publicationDate;
     }
 
     public String getIdBook() {
@@ -30,11 +30,11 @@ public class Material {
         this.title = title;
     }
 
-    public String getAnioPublic() {
-        return anioPublic;
+    public String getPublicationDate() {
+        return publicationDate;
     }
 
-    public void setAnioPublic(String anioPublic) {
-        this.anioPublic = anioPublic;
+    public void setPublicationDate(String publicationDate) {
+        this.publicationDate = publicationDate;
     }
 }

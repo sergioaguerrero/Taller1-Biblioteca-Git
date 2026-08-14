@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -106,4 +107,7 @@ public class Main {
             }
         }
     }
+
+    //String idBook, String title, String publicationDate, String author, boolean available
+
 }
